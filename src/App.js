@@ -9,6 +9,7 @@ function App() {
   const [currencySymbols, setCurrencySymbols] = useState({});
   const [sourceCurrency, setSourceCurrency] = useState('USD');
   const [targetCurrency, setTargetCurrency] = useState('EUR');
+  const [isConverting, setIsConverting] = useState(false); // State to track conversion status
 
   // Fetch available currencies and symbols on component mount
   useEffect(() => {
@@ -29,6 +30,7 @@ function App() {
 
   const convertCurrency = () => {
     if (sourceCurrency && targetCurrency && currencyValue) {
+      setIsConverting(true); // Start the conversion process
       let freecurrencyapi = new Freecurrencyapi('fca_live_AFk41IKNCPpAhAgZut1hFj75hCQLqJmiRHAVAoEF');
       freecurrencyapi.latest({
         base_currency: sourceCurrency,
@@ -36,6 +38,9 @@ function App() {
       }).then(response => {
         const rate = response.data[targetCurrency];
         setConvertedValue(currencyValue * rate);
+        setIsConverting(false); // Conversion is done
+      }).catch(() => {
+        setIsConverting(false); // In case of error, stop the loading state
       });
     }
   };
@@ -79,7 +84,9 @@ function App() {
             </div>
           </div>
         </div>
-        <button onClick={convertCurrency}>Convert</button>
+        <button onClick={convertCurrency} disabled={isConverting}>
+          {isConverting ? 'Converting...' : 'Convert'}
+        </button>
       </div>
     </div>
   );
