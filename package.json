@@ -1,6 +1,7 @@
 {
   "name": "currency-converter",
   "version": "0.1.0",
+  "homepage": "https://uritisaiabhishek.github.io/Currency-Converter",
   "private": true,
   "dependencies": {
     "@everapi/freecurrencyapi-js": "^1.0.1",
@@ -12,7 +13,6 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://uritisaiabhishek.github.io/Currency-Converter",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
