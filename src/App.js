@@ -12,7 +12,7 @@ function App() {
 
   // Fetch available currencies and symbols on component mount
   useEffect(() => {
-    const freecurrencyapi = new Freecurrencyapi('fca_live_AFk41IKNCPpAhAgZut1hFj75hCQLqJmiRHAVAoEF');
+    let freecurrencyapi = new Freecurrencyapi('fca_live_AFk41IKNCPpAhAgZut1hFj75hCQLqJmiRHAVAoEF');
 
     freecurrencyapi.currencies().then(response => {
       const currencyData = response.data;
@@ -29,6 +29,7 @@ function App() {
 
   const convertCurrency = () => {
     if (sourceCurrency && targetCurrency && currencyValue) {
+      let freecurrencyapi = new Freecurrencyapi('fca_live_AFk41IKNCPpAhAgZut1hFj75hCQLqJmiRHAVAoEF');
       freecurrencyapi.latest({
         base_currency: sourceCurrency,
         currencies: targetCurrency
