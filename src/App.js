@@ -9,10 +9,11 @@ function App() {
   const [currencySymbols, setCurrencySymbols] = useState({});
   const [sourceCurrency, setSourceCurrency] = useState('USD');
   const [targetCurrency, setTargetCurrency] = useState('EUR');
-  const freecurrencyapi = new Freecurrencyapi('fca_live_AFk41IKNCPpAhAgZut1hFj75hCQLqJmiRHAVAoEF');
 
   // Fetch available currencies and symbols on component mount
   useEffect(() => {
+    const freecurrencyapi = new Freecurrencyapi('fca_live_AFk41IKNCPpAhAgZut1hFj75hCQLqJmiRHAVAoEF');
+
     freecurrencyapi.currencies().then(response => {
       const currencyData = response.data;
       setCurrencies(Object.keys(currencyData));
@@ -24,7 +25,7 @@ function App() {
       }
       setCurrencySymbols(symbols);
     });
-  }, []);
+  }, []); // No need to include freecurrencyapi in the dependency array now
 
   const convertCurrency = () => {
     if (sourceCurrency && targetCurrency && currencyValue) {
@@ -50,7 +51,7 @@ function App() {
                 <option key={currency} value={currency}>{currency}</option>
               ))}
             </select>
-            <span className='currency-symbol'>{currencySymbols[sourceCurrency] || ''}</span>
+            {currencySymbols[sourceCurrency] || ''}
             <input
               type="number"
               value={currencyValue}
