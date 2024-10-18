@@ -8,7 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,4 +29,4 @@ jobs:
           git config --global user.email "uritisaiabhishek@users.noreply.github.com"
 
       - name: Deploy to GitHub Pages
-        run: npx gh-pages -d build
+        run: npm run deploy
