@@ -32,5 +32,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          npm install gh-pages --save-dev  # Ensure gh-pages is installed 
+          npm install gh-pages --save-dev  # Ensure gh-pages is installed
+          # Set remote URL for deployment
+          git remote set-url origin https://uritisaiabhishek:${{ secrets.GH_TOKEN }}@github.com/uritisaiabhishek/Currency-Converter.git
           npm run deploy
