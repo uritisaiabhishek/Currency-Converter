@@ -52,13 +52,17 @@ function App() {
                 <option key={currency} value={currency}>{currency}</option>
               ))}
             </select>
-            {currencySymbols[sourceCurrency] || ''}
-            <input
-              type="number"
-              value={currencyValue}
-              onChange={e => setCurrencyValue(Number(e.target.value))}
-              placeholder="Enter amount"
-            />
+            <div className='currency_input_group'>
+              <span>
+                {currencySymbols[sourceCurrency] || ''}
+              </span>
+              <input
+                type="number"
+                value={currencyValue}
+                onChange={e => setCurrencyValue(Number(e.target.value))}
+                placeholder="Enter amount"
+              />
+            </div>
           </div>
 
           <div className='currency-input'>
