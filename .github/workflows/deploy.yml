@@ -1,6 +1,14 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to your default branch if it's not main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -22,4 +30,4 @@ jobs:
           git config --global user.email "uritisaiabhishek@users.noreply.github.com"
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
+        run: npx gh-pages -d build
