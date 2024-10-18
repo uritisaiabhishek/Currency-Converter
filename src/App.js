@@ -14,8 +14,10 @@ function App() {
   // Fetch available currencies and symbols on component mount
   useEffect(() => {
     // In your App.js
-    let freecurrencyapi = new Freecurrencyapi(process.env.REACT_APP_FREECURRENCY_API_KEY);
-    
+    // let freecurrencyapi = new Freecurrencyapi(process.env.REACT_APP_FREECURRENCY_API_KEY);
+
+    let freecurrencyapi = new Freecurrencyapi('fca_live_AFk41IKNCPpAhAgZut1hFj75hCQLqJmiRHAVAoEF');
+
     freecurrencyapi.currencies().then(response => {
       const currencyData = response.data;
       setCurrencies(Object.keys(currencyData));
@@ -32,9 +34,7 @@ function App() {
   const convertCurrency = () => {
     if (sourceCurrency && targetCurrency && currencyValue) {
       setIsConverting(true); // Start the conversion process
-      // In your App.js
-      let freecurrencyapi = new Freecurrencyapi(process.env.REACT_APP_FREECURRENCY_API_KEY);
-    
+      let freecurrencyapi = new Freecurrencyapi('fca_live_AFk41IKNCPpAhAgZut1hFj75hCQLqJmiRHAVAoEF');
       freecurrencyapi.latest({
         base_currency: sourceCurrency,
         currencies: targetCurrency
