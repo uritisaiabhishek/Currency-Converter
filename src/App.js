@@ -62,7 +62,7 @@ function App() {
             </select>
             <div className='currency_input_group'>
               <span>
-                {currencySymbols[sourceCurrency] || ''}
+                {sourceCurrency === 'INR' ? "₹": (currencySymbols[sourceCurrency] || '')}
               </span>
               <input
                 type="number"
