@@ -82,7 +82,9 @@ function App() {
             </select>
             <div className='converted-output'>
               <span>
-                {currencySymbols[targetCurrency] || ''} {convertedValue.toFixed(2)}
+                {
+                  targetCurrency === 'INR' ? "₹":(currencySymbols[targetCurrency] || '')
+                } {convertedValue.toFixed(2)}
               </span>
             </div>
           </div>
